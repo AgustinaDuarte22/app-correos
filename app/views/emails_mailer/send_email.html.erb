@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Correo electrónico enviado desde mi aplicación</h1>
+    <p><strong>De:</strong> <%= @email.from %></p>
+    <p><strong>Para:</strong> <%= @to %></p>
+    <p><strong>Asunto:</strong> <%= @subject %></p>
+    <p><strong>Cuerpo:</strong></p>
+    <p><%= @body %></p>
+  </body>
+</html>

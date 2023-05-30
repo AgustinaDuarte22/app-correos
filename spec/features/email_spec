@@ -1,0 +1,20 @@
+# spec/features/email_spec.rb
+require 'rails_helper'
+require 'capybara/rspec'
+
+RSpec.feature 'Email', type: :feature do
+  scenario 'User sends an email' do
+    visit new_email_path
+
+    fill_in 'To', with: 'recipient@example.com'
+    fill_in 'From', with: 'sender@example.com'
+    fill_in 'Subject', with: 'Test Email'
+    fill_in 'Body', with: 'This is a test email.'
+
+    click_button 'Enviar'
+
+    expect(page).to have_content('Correo electrónico enviado correctamente.')
+    expect(Email.count).to eq(1)
+    expect(EmailWorker.jobs.size).to eq(1)
+  end
+end
